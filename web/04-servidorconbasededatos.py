@@ -3,7 +3,7 @@ from flask import request
 import psycopg2
 
 app = Flask(__name__)
-conn = psycopg2.connect("dbname=postgres user=postgres password=postgres")
+conn = psycopg2.connect("host=192.168.1.119 dbname=postgres user=postgres password=postgres")
 
 app = Flask(__name__)
 def lineaDetalle(row):
