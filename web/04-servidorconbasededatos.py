@@ -15,7 +15,6 @@ def lineaDetalle(row):
     </tr>
     """
     return linea
-
 def cliente(codigo):
     cur = conn.cursor()
     try:
@@ -24,7 +23,6 @@ def cliente(codigo):
        return 'no puedo ...'
     row = cur.fetchone()
     return row
-
 @app.route('/')
 def hello_world():
     return "hello world"
@@ -61,22 +59,20 @@ def facturas():
 </body>
 </html>
 """
-
-
-
 @app.route('/clientes')
 def datos():
     cur = conn.cursor()
     try:
         cur.execute("""select c.CUSTOMERID, c.COMPANYNAME,
                         sum( UNITPRICE * QUANTITY * (1- DISCOUNT)) importe
-                            From CUSTOMERS c
+                        FROM CUSTOMERS c
                         INNER JOIN ORDERS o
                         INNER JOIN ORDER_DETAILS d
                             on o.ORDERID = d.ORDERID
                             on c.CUSTOMERID = o.CUSTOMERID
                     group by c.CUSTOMERID, c.COMPANYNAME
-                    order by c.COMPANYNAME""")
+                    order by c.COMPANYNAME"""
+                    )
     except:
        return 'no puedo ...'
     rows = cur.fetchall()
@@ -111,7 +107,5 @@ def datos():
 </body>
 </html>
 """
-
-
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5001)
