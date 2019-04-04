@@ -15,5 +15,5 @@ https://code.visualstudio.com/download
 CONEXION A POSTGRES
 ===================
 ip              usuario  pwd      bdd
-172.20.181.33   postgres postgres postgres
+192.168.1.211    postgres postgres postgres
 
